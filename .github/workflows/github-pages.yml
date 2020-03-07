@@ -1,0 +1,27 @@
+name: github pages
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Build hello-world-comment
+        run: |
+          cd hello-world-comment
+          npm ci
+          npm run all
+      - run: |
+          mkdir public
+          cp hello-world-comment/dist/index.js public/hello-world-comment.js
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
