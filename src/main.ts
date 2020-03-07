@@ -1,16 +1,19 @@
 import * as core from '@actions/core'
-import {wait} from './wait'
+import {context, GitHub} from '@actions/github'
+
+declare const githubToken: string;
 
 async function run(): Promise<void> {
   try {
-    const ms: string = core.getInput('milliseconds')
-    core.debug(`Waiting ${ms} milliseconds ...`)
-
-    core.debug(new Date().toTimeString())
-    await wait(parseInt(ms, 10))
-    core.debug(new Date().toTimeString())
-
-    core.setOutput('time', new Date().toTimeString())
+    // Create GitHub client
+    const githubClient = new GitHub(githubToken);
+    // Comment "hello, world"
+    await githubClient.issues.createComment({
+      issue_number: context.issue.number,
+      owner: context.repo.owner,
+      repo: context.repo.repo,
+      body: 'hello, world'
+    });
   } catch (error) {
     core.setFailed(error.message)
   }
