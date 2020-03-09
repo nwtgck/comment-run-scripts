@@ -3816,19 +3816,19 @@ function run() {
             const gitUserName = "github-actions[bot]";
             const prBranchName = "comment-run/npm-update";
             const baseBranchName = github_1.context.payload.repository.default_branch;
-            exec.exec(`git config --global user.email "${gitUserEmail}"`);
-            exec.exec(`git config --global user.name "${gitUserName}"`);
-            exec.exec(`git fetch --all`);
-            exec.exec(`git checkout ${baseBranchName}`);
-            exec.exec(`git checkout -b ${prBranchName}`);
+            yield exec.exec(`git config --global user.email "${gitUserEmail}"`);
+            yield exec.exec(`git config --global user.name "${gitUserName}"`);
+            yield exec.exec(`git fetch --all`);
+            yield exec.exec(`git checkout ${baseBranchName}`);
+            yield exec.exec(`git checkout -b ${prBranchName}`);
             const packageJson = JSON.parse(__webpack_require__(747).readFileSync('package.json'));
             const depStr = Object.keys(packageJson.dependencies || {}).join(' ');
             const devDepStr = Object.keys(packageJson.devDependencies || {}).join(' ');
-            exec.exec(`npm i ${depStr} ${devDepStr}`);
-            exec.exec("git status");
-            exec.exec("git add package*json");
-            exec.exec(`git commit -m 'chore(deps): update npm dependencies'`);
-            exec.exec(`git push -fu origin ${prBranchName}`);
+            yield exec.exec(`npm i ${depStr} ${devDepStr}`);
+            yield exec.exec("git status");
+            yield exec.exec("git add package*json");
+            yield exec.exec(`git commit -m 'chore(deps): update npm dependencies'`);
+            yield exec.exec(`git push -fu origin ${prBranchName}`);
             (() => __awaiter(this, void 0, void 0, function* () {
                 yield githubClient.pulls.create({
                     base: baseBranchName,
