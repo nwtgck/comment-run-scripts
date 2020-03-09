@@ -4,11 +4,20 @@ DIST_DIR=dist
 mkdir -p $DIST_DIR
 
 # Build hello-world-comment
-cd hello-world-comment
+NAME=hello-world-comment
+cd $NAME
 npm ci
 npm run all
 cd ..
-cp hello-world-comment/dist/index.js $DIST_DIR/hello-world-comment.js
+cp $NAME/dist/index.js $DIST_DIR/$NAME.js
+
+# Build merge-preview
+NAME=merge-preview
+cd $NAME
+npm ci
+npm run all
+cd ..
+cp $NAME/dist/index.js $DIST_DIR/$NAME.js
 
 # Create index.html for visitors to top page
 cd $DIST_DIR
