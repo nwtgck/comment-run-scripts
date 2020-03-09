@@ -13,7 +13,7 @@ Scripts for [comment-run](https://github.com/nwtgck/actions-comment-run) action
 
 ```js
 (async () => {
-  const url ="https://nwtgck.github.io/comment-run-scripts/hello-world-comment.js";
+  const url = "https://nwtgck.github.io/comment-run-scripts/hello-world-comment.js";
   const js = await (await fetch(url)).text();
   eval(js);
 })();
