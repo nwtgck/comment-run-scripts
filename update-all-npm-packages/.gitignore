@@ -1,0 +1,7 @@
+# Dependency directory
+/node_modules
+/dist
+
+# Ignore built ts files
+__tests__/runner/*
+lib/**/*
