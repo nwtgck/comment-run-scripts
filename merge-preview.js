@@ -3826,8 +3826,8 @@ function run() {
             const branchName = resJson.head.ref;
             const fullRepoName = resJson.head.repo.full_name;
             const previewBranchName = `actions-merge-preview/${prUserName}-${branchName}`;
-            yield exec.exec(`git config --global user.email "bee-bot-bot@protonmail.com"`);
-            yield exec.exec(`git config --global user.name "Bee Bot"`);
+            yield exec.exec(`git config --global user.email "github-actions[bot]@users.noreply.github.com"`);
+            yield exec.exec(`git config --global user.name "github-actions[bot]"`);
             // (from: https://stackoverflow.com/a/23987039/2885946)
             yield exec.exec(`git fetch --all`);
             yield exec.exec(`git checkout ${baseBranchName}`);
