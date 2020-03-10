@@ -26,7 +26,7 @@ async function run(): Promise<void> {
     
     await exec.exec("git status");
     await exec.exec("git add package*json");
-    await exec.exec(`git commit -m 'chore(deps): update npm dependencies'`);
+    await exec.exec(`git commit -m "chore(deps): update npm dependencies"`);
     await exec.exec(`git push -fu origin ${prBranchName}`);
     
     (async () => {
