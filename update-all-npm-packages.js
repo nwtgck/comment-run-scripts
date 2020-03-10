@@ -3827,7 +3827,7 @@ function run() {
             yield exec.exec(`npm i ${depStr} ${devDepStr}`);
             yield exec.exec("git status");
             yield exec.exec("git add package*json");
-            yield exec.exec(`git commit -m 'chore(deps): update npm dependencies'`);
+            yield exec.exec(`git commit -m "chore(deps): update npm dependencies"`);
             yield exec.exec(`git push -fu origin ${prBranchName}`);
             (() => __awaiter(this, void 0, void 0, function* () {
                 yield githubClient.pulls.create({
