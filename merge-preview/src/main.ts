@@ -22,8 +22,8 @@ async function run(): Promise<void> {
     const branchName = resJson.head.ref;
     const fullRepoName = resJson.head.repo.full_name;
     const previewBranchName = `actions-merge-preview/${prUserName}-${branchName}`;
-    await exec.exec(`git config --global user.email "bee-bot-bot@protonmail.com"`);
-    await exec.exec(`git config --global user.name "Bee Bot"`);
+    await exec.exec(`git config --global user.email "github-actions[bot]@users.noreply.github.com"`);
+    await exec.exec(`git config --global user.name "github-actions[bot]"`);
     // (from: https://stackoverflow.com/a/23987039/2885946)
     await exec.exec(`git fetch --all`);
     await exec.exec(`git checkout ${baseBranchName}`);
