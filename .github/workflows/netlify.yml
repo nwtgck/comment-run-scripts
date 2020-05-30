@@ -13,7 +13,7 @@ jobs:
         run: ./build-scripts.bash
 
       - name: Deploy to Netlify
-        uses: nwtgck/actions-netlify@v1.0
+        uses: nwtgck/actions-netlify@v1.1
         with:
           publish-dir: './dist'
           github-token: ${{ secrets.GITHUB_TOKEN }}
